@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2>Ma Cave</h2>
+<a href="#" id="add-cave">Ajouter une Cave</a>
+
+<ul>
+    {% for cave in caves %}
+    <li>
+        {{ cave[1] }} <!-- Cave name -->
+        <a href="{{ url_for('cellar', cave_id=cave[0]) }}">Voir mes  Bouteilles</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<div id="add-cave-form" style="display:none;">
+    <h3>Ajouter une cave</h3>
+    <form method="POST" action="{{ url_for('add_cave') }}">
+        <input type="text" name="cave_name" placeholder="Cave Name" required>
+        <input type="submit" value="Add Cave">
+        
+    </form>
+    
+</div>
+
+<script>
+    document.getElementById('add-cave').addEventListener('click', function() {
+        var form = document.getElementById('add-cave-form');
+        form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    });
+</script>
+{% endblock %}

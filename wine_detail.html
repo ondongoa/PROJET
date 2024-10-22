@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Détails du Vin{% endblock %}
+
+{% block content %}
+    <h1>{{ wine[1] }}</h1>  <!-- Name of the wine -->
+    <img src="{{ wine[7] }}" alt="Photo de {{ wine[1] }}" style="width:200px;height:auto;"> <!-- Adjust index for photo -->
+    <p>Type: {{ wine[2] }}</p>  <!-- Type of wine -->
+    <p>Année: {{ wine[3] }}</p>  <!-- Year of wine -->
+    <p>Prix: {{ wine[5] }} €</p>  <!-- Price -->
+    <p>Note globale : {{ average_rating | round(1) }} / 5 </p>
+
+    <h2>Commentaires</h2>
+    <ul>
+        {% for comment in comments %}
+            <li>
+                <strong>{{ comment[0] }}:</strong> {{ comment[1] }} )
+            </li>
+        {% else %}
+            <li>Aucun commentaire pour ce vin.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Form for adding a comment -->
+    <h3>Ajouter un commentaire</h3>
+    <form action="{{ url_for('cellar', cave_id=cave_id) }}" method="POST">
+        <input type="hidden" name="id_vin" value="{{ wine[0] }}"> <!-- Assuming wine[0] is id_vin -->
+        <textarea name="commentaire" placeholder="Laissez un commentaire" required></textarea>
+        
+        <label for="note_commentaire">Note (0-5) :</label>
+        <input type="number" name="note_commentaire" min="0" max="5" required>
+        
+        <button type="submit" name="add_comment">Ajouter un commentaire</button>
+    </form>
+{% endblock %}

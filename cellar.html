@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Cave à Vin{% endblock %}
+
+{% block content %}
+    <h1>Cave {{ cave_id }}</h1>
+
+    <h2>Étagères</h2>
+    {% for etagere in etageres %}
+        <h3>{{ etagere[1] }} ({{ bouteilles_par_etagere[etagere[0]]|length }} bouteilles)</h3>
+        <div>
+            {% for bouteille in bouteilles_par_etagere[etagere[0]] %}
+                <p>
+                    <strong><a href="{{ url_for('wine_detail', id_vin=bouteille[3]) }}">{{ bouteille[4] }}</a></strong>  <!-- Lien vers la page de détails du vin -->
+                    ({{ bouteille[5] }}/5 note globale)  <!-- Note globale -->
+                    : {{ bouteille[2] }} bouteilles
+                </p>
+
+                <!-- Formulaire pour supprimer la bouteille -->
+                <form action="{{ url_for('cellar', cave_id=cave_id) }}" method="POST">
+                    <input type="hidden" name="bottle_id" value="{{ bouteille[0] }}">
+                    <button type="submit" name="delete_bottle">Supprimer la bouteille</button>
+                </form>
+
+                <!-- Formulaire pour commenter et noter ce vin -->
+                <form action="{{ url_for('cellar', cave_id=cave_id) }}" method="POST">
+                    <input type="hidden" name="id_vin" value="{{ bouteille[3] }}">  <!-- Pass the correct id_vin from the bottle -->
+                    <textarea name="commentaire" placeholder="Laisser un commentaire" required></textarea>
+                    <label for="note_commentaire">Note (0-5) :</label>
+                    <input type="number" name="note_commentaire" min="0" max="5" required>
+                    <button type="submit" name="add_comment">Ajouter un commentaire</button>
+                </form>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+    <h4>Ajouter une nouvelle bouteille</h4>
+    <form action="{{ url_for('cellar', cave_id=cave_id) }}" method="POST">
+        <input type="number" name="nom_emplacement_bouteille" placeholder="Emplacement" min="1" max="5" required>
+        <input type="number" name="quantite_bouteille" placeholder="Quantité" min="1" required>
+        <select name="id_vin" required>
+            <option value="" disabled selected>Sélectionner un vin</option>
+            {% for vin in vins %}
+                <option value="{{ vin[0] }}">{{ vin[1] }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" name="add_bottle">Ajouter</button>
+    </form>
+    <form action="{{ url_for('export_cave', cave_id=cave_id) }}" method="get">
+    <button type="submit" class="btn btn-primary">Exporter en JSON</button>
+    </form>
+
+
+{% endblock %}

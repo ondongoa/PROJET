@@ -1,0 +1,176 @@
+/* Global Styles */
+body {
+    font-family: 'Lora', serif; /* Police élégante et raffinée */
+    background-color: #f5f5f5; /* Couleur douce pour le fond */
+    color: #333; /* Texte en gris foncé pour une meilleure lisibilité */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    color: #2c3e50; /* Titre en bleu foncé */
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+h2 {
+    border-bottom: 2px solid #bdc3c7; /* Ligne subtile sous les titres */
+    padding-bottom: 10px;
+}
+
+a {
+    color: #8e44ad; /* Violet foncé pour les liens */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #9b59b6;
+    text-decoration: underline;
+}
+
+/* Navigation Bar */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    background-color: #34495e; /* Bar d'en-tête en bleu foncé */
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #ecf0f1; /* Texte de navigation en blanc */
+    padding: 5px 10px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #2c3e50; /* Survol avec légère variation */
+    border-radius: 4px;
+}
+
+/* Container for main content */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff; /* Arrière-plan blanc pour un contenu clair */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Flash Messages */
+.flashes {
+    list-style-type: none;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.flashes li {
+    background-color: #f39c12; /* Fond orange pour messages flash */
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* Forms */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+textarea,
+select {
+    padding: 10px;
+    border: 1px solid #bdc3c7; /* Bordure subtile */
+    border-radius: 4px;
+    width: 100%;
+    font-size: 16px;
+    background-color: #ecf0f1;
+}
+
+input[type="submit"],
+button {
+    background-color: #27ae60; /* Bouton vert pour CTA */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background-color: #2ecc71;
+}
+
+select {
+    background-color: #fff;
+}
+
+#add-cave {
+    background-color: #8e44ad;
+    padding: 8px 15px;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+#add-cave:hover {
+    background-color: #9b59b6;
+}
+
+/* Hideable Form */
+#add-cave-form {
+    margin-top: 20px;
+    background-color: #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Wine Cellar Styles */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 15px;
+}
+
+button[name="delete_bottle"] {
+    background-color: #c0392b; /* Rouge pour suppression */
+    color: white;
+    margin-top: 10px;
+    padding: 5px 10px;
+}
+
+button[name="delete_bottle"]:hover {
+    background-color: #e74c3c;
+}
+
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Bouteilles</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Bouteilles dans la Cave</h1>
+    <a href="{{ url_for('dashboard') }}">Retour au tableau de bord</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom du Vin</th>
+                <th>Type</th>
+                <th>Année</th>
+                <th>Emplacement</th>
+                <th>Quantité</th>
+                <th>Commentaire</th>
+                <th>Prix</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bottle in bottles %}
+            <tr>
+                <td>{{ bottle[3] }}</td>  <!-- Nom du Vin -->
+                <td>{{ bottle[4] }}</td>  <!-- Type -->
+                <td>{{ bottle[5] }}</td>  <!-- Année -->
+                <td>{{ bottle[1] }}</td>  <!-- Emplacement -->
+                <td>{{ bottle[2] }}</td>  <!-- Quantité -->
+                <td>{{ bottle[6] }}</td>  <!-- Commentaire -->
+                <td>{{ bottle[7] }}</td>  <!-- Prix -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
