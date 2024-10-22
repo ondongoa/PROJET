@@ -6,11 +6,9 @@ import json
 from flask import jsonify, send_file
 import os
 
-# Initialize the Flask application
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key_here'  
 
-# Initialize the Login Manager and Bcrypt
 login_manager = LoginManager(app)
 bcrypt = Bcrypt(app)
 login_manager.login_view = 'login'
@@ -24,7 +22,6 @@ def get_db_connection():
         database="cave"  
     )
 
-# User model
 class Utilisateur(UserMixin):
     def __init__(self, pseudo_utilisateur, nom_utilisateur, prenom_utilisateur, email_utilisateur):
         self.pseudo_utilisateur = pseudo_utilisateur
