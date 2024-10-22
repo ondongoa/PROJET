@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un Vin</title>
+</head>
+<body>
+    <h1>Ajouter un Vin</h1>
+    <form action="{{ url_for('add_wine') }}" method="POST">
+        <input type="text" name="nom_vin" placeholder="Nom du vin" required>
+        <input type="text" name="type_vin" placeholder="Type de vin" required>
+        <input type="number" name="annee_vin" placeholder="Année" required>
+        <input type="number" step="0.01" name="prix_vin" placeholder="Prix" required>
+        <textarea name="commentaire_vin" placeholder="Commentaire"></textarea>
+
+        <select name="id_cave" required>
+            <option value="" disabled selected>Sélectionner une cave</option>
+            {% for cave in caves %}
+                <option value="{{ cave[0] }}">{{ cave[1] }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Ajouter Vin</button>
+        <a href="{{ url_for('add_wine') }}">Ajouter un nouveau vin</a>
+    </form>
+</body>
+</html>

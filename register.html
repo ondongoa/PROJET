@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<h2>Inscription</h2>
+<form method="POST">
+    <label for="pseudo_utilisateur">Pseudo:</label>
+    <input type="text" name="pseudo_utilisateur" required>
+    
+    <label for="mdp_utilisateur">Password:</label>
+    <input type="password" name="mdp_utilisateur" required>
+    
+    <label for="nom_utilisateur">Nom:</label>
+    <input type="text" name="nom_utilisateur" required>
+    
+    <label for="prenom_utilisateur">Prénom:</label>
+    <input type="text" name="prenom_utilisateur" required>
+
+    <label for="email_utilisateur">Email:</label>
+    <input type="email" name="email_utilisateur" required>
+
+    <input type="submit" value="Register">
+</form>
+{% endblock %}

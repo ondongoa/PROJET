@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Ajouter une Bouteille dans la cave {{ cave_id }}</h2>
+
+    <form method="POST" action="{{ url_for('add_bottle') }}">
+        <label for="nom_vin">Nom du Vin:</label>
+        <input type="text" name="nom_vin" required>
+
+        <label for="quantite_bouteille">Quantité:</label>
+        <input type="number" name="quantite_bouteille" required>
+
+        <label for="nom_emplacement_bouteille">Emplacement:</label>
+        <input type="text" name="nom_emplacement_bouteille" required>
+
+        <input type="hidden" name="id_cave" value="{{ cave_id }}">  <!-- ID de la cave -->
+        
+        <label for="id_vin">Sélectionner un Vin:</label>
+        <select name="id_vin" required>
+            <option value="" disabled selected>Sélectionner un vin</option>
+            {% for vin in vins %}
+                <option value="{{ vin[0] }}">{{ vin[1] }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Ajouter</button>
+    </form>
+{% endblock %}
